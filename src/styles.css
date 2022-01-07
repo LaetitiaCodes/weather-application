@@ -38,8 +38,9 @@ video {
 }
 footer {
   margin-top: 50px;
-  font-size: 11pt;
-  font-style: monogram;
+  margin-left: 200px;
+  font-size: 9pt;
+  font-family: "Comfortaa";
 }
 
 #weatherCondition {
