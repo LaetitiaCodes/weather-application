@@ -36,6 +36,11 @@ video {
   border: 1px dotted rgb(179, 179, 179);
   border-radius: 10px;
 }
+footer {
+  margin-top: 50px;
+  font-size: 11pt;
+  font-style: monogram;
+}
 
 #weatherCondition {
   text-transform: capitalize;
