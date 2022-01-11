@@ -1,11 +1,10 @@
+// adding current date/time
+
 function formatDate(Date) {
   let now = new Date();
   let currentTime = document.querySelector("#time-now");
-
   let hours = (now.getHours() < 10 ? "0" : "") + now.getHours();
   let minutes = (now.getMinutes() < 10 ? "0" : "") + now.getMinutes();
-  //to get minutes with two digits e.g. 13:03 instead of 13:3
-
   let days = [
     "Sunday",
     "Monday",
@@ -16,12 +15,10 @@ function formatDate(Date) {
     "Saturday",
   ];
   let weekday = days[now.getDay()];
-
   currentTime.innerHTML = `${weekday}, ${hours}:${minutes}`;
   return currentTime;
 }
 formatDate(Date);
-
 //Adding an advanced search function and display live weather
 
 function showWeather(response) {
@@ -30,12 +27,15 @@ function showWeather(response) {
   let weatherCondition = document.querySelector("#weatherCondition");
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind");
-
+  let time = document.querySelector("#time-now");
+  console.log(response.data);
   nameCity.innerHTML = `${response.data.name}`;
   temperature.innerHTML = `${Math.round(response.data.main.temp)} °C`;
   weatherCondition.innerHTML = `${response.data.weather[0].description}`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m/s`;
+  time.innerHTML = `${formatDate(response.data.dt * 1000)}`;
+
   function showDresscode() {
     let dresscode = document.querySelector(".dresscodeTipp");
     let temperatureCelsius = Math.round(response.data.main.temp);
