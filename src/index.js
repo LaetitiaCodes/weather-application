@@ -28,7 +28,7 @@ function showWeather(response) {
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind");
   let time = document.querySelector("#time-now");
-  console.log(response.data);
+
   nameCity.innerHTML = `${response.data.name}`;
   temperature.innerHTML = `${Math.round(response.data.main.temp)} °C`;
   weatherCondition.innerHTML = `${response.data.weather[0].description}`;
