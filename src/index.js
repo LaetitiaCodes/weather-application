@@ -28,7 +28,6 @@ function showWeather(response) {
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind");
   let time = document.querySelector("#time-now");
-  let icon = document.querySelector("#weather-icon");
 
   nameCity.innerHTML = `${response.data.name}`;
   temperature.innerHTML = `${Math.round(response.data.main.temp)} °C`;
@@ -36,20 +35,22 @@ function showWeather(response) {
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m/s`;
   time.innerHTML = `${formatDate(response.data.dt * 1000)}`;
-  icon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  icon.setAttribute("alt", `${response.data.weather[0].description}`);
 
   function showDresscode() {
     let dresscode = document.querySelector(".dresscodeTipp");
     let temperatureCelsius = Math.round(response.data.main.temp);
+    let icon = document.querySelector("#weatherIcon");
+
     if (temperatureCelsius >= 15) {
       dresscode.innerHTML = "Take sunglasses!";
     } else {
       dresscode.innerHTML = "Take a scarf!";
     }
+    icon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    icon.setAttribute("alt", `${response.data.weather[0].description}`);
   }
   showDresscode();
 }
