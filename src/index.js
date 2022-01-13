@@ -30,7 +30,7 @@ function showWeather(response) {
   let time = document.querySelector("#time-now");
 
   nameCity.innerHTML = `${response.data.name}`;
-  temperature.innerHTML = `${Math.round(response.data.main.temp)} °C`;
+  temperature.innerHTML = `${Math.round(response.data.main.temp)}`;
   weatherCondition.innerHTML = `${response.data.weather[0].description}`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m/s`;
@@ -94,14 +94,31 @@ function searchWeatherVienna() {
   axios.get(url).then(showWeather);
 }
 
-let sendForm = document.querySelector("form");
-sendForm.addEventListener("submit", searchWeather);
+// Convert temperature from Celsius to Fahrenheit
+function changeToCelsius(event) {
+  event.preventDefault();
+  let temperatureToCelsius = document.querySelector("#cityTemperature");
+  temperatureToCelsius.innerHTML = `-6`;
+}
+function changeToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureToFahrenheit = document.querySelector("#cityTemperature");
+  temperatureToFahrenheit.innerHTML = `21`;
 
-let londonQuicksearch = document.querySelector("#london-quicksearch");
-londonQuicksearch.addEventListener("click", searchWeatherLondon);
+  let sendForm = document.querySelector("form");
+  sendForm.addEventListener("submit", searchWeather);
 
-let parisQuicksearch = document.querySelector("#paris-quicksearch");
-parisQuicksearch.addEventListener("click", searchWeatherParis);
+  let londonQuicksearch = document.querySelector("#london-quicksearch");
+  londonQuicksearch.addEventListener("click", searchWeatherLondon);
 
-let viennaQuicksearch = document.querySelector("#vienna-quicksearch");
-viennaQuicksearch.addEventListener("click", searchWeatherVienna);
+  let parisQuicksearch = document.querySelector("#paris-quicksearch");
+  parisQuicksearch.addEventListener("click", searchWeatherParis);
+
+  let viennaQuicksearch = document.querySelector("#vienna-quicksearch");
+  viennaQuicksearch.addEventListener("click", searchWeatherVienna);
+}
+let tempCelsius = document.querySelector("#celsius");
+tempCelsius.addEventListener("click", changeToCelsius);
+
+let tempFahrenheit = document.querySelector("#fahrenheit");
+tempFahrenheit.addEventListener("click", changeToFahrenheit);

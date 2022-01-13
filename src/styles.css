@@ -46,7 +46,19 @@ footer {
 #weatherCondition {
   text-transform: capitalize;
 }
-
+#celsius,
+#fahrenheit {
+  position: relative;
+  left: 30px;
+  top: -20px;
+}
+#celsius {
+  font-weight: 900;
+}
+#celsius,
+#fahrenheit:hover {
+  cursor: pointer;
+}
 .container {
   width: 810px;
   height: auto;
@@ -92,8 +104,9 @@ footer {
   font-family: "Source Sans 3", sans-serif;
   color: rgb(161, 161, 161);
   padding: 8px 15px;
-  position: relative;
-  top: 60px;
+  position: fixed;
+  top: 200px;
+  left: 800px;
 }
 .currentWeather,
 .humidityWind {
