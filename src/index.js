@@ -27,14 +27,12 @@ function showWeather(response) {
   let weatherCondition = document.querySelector("#weatherCondition");
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind");
-  let time = document.querySelector("#time-now");
 
   nameCity.innerHTML = `${response.data.name}`;
   temperature.innerHTML = `${Math.round(response.data.main.temp)}`;
   weatherCondition.innerHTML = `${response.data.weather[0].description}`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m/s`;
-  time.innerHTML = `${formatDate(response.data.dt * 1000)}`;
 
   function showDresscode() {
     let dresscode = document.querySelector(".dresscodeTipp");
@@ -54,24 +52,35 @@ function showWeather(response) {
   }
   showDresscode();
 
-  function changeToCelsius(event) {
-    event.preventDefault();
-    let temperatureToCelsius = document.querySelector("#cityTemperature");
-    temperatureToCelsius.innerHTML = Math.round(response.data.main.temp);
-  }
-  function changeToFahrenheit(event) {
-    event.preventDefault();
+  function changeToFahrenheit(response) {
     let temperatureToFahrenheit = document.querySelector("#cityTemperature");
-    temperatureToFahrenheit.innerHTML = Math.round(
-      (response.data.main.temp * 9) / 5 + 32
-    );
+    let searchInput = document.querySelector(".inputField");
+    let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+    let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
+    let value = searchInput.value;
+    let unitImperial = "imperial";
+    let url = `${apiEndpoint}?q=${value}&appid=${apiKey}&units=${unitImperial}`;
+    temperatureToFahrenheit.innerHTML = Math.round(response.data.main.temp);
+  }
+
+  function changeToCelsius(response) {
+    let temperatureToCelsius = document.querySelector("#cityTemperature");
+    let searchInput = document.querySelector(".inputField");
+    let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+    let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
+    let value = searchInput.value;
+    let unitMetric = "metric";
+    let url = `${apiEndpoint}?q=${value}&appid=${apiKey}&units=${unitMetric}`;
+    temperatureToCelsius.innerHTML = Math.round(response.data.main.temp);
   }
 
   let tempCelsius = document.querySelector("#celsius");
-  tempCelsius.addEventListener("click", changeToCelsius);
-
+  tempCelsius.addEventListener("click", axios.get(url).then(changeToCelsius));
   let tempFahrenheit = document.querySelector("#fahrenheit");
-  tempFahrenheit.addEventListener("click", changeToFahrenheit);
+  tempFahrenheit.addEventListener(
+    "click",
+    axios.get(url).then(changeToFahrenheit)
+  );
 }
 
 function searchWeather(event) {
@@ -85,6 +94,7 @@ function searchWeather(event) {
   axios.get(url).then(showWeather);
 }
 
+//quick weather searches
 function searchWeatherLondon() {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
   let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
@@ -109,11 +119,8 @@ function searchWeatherVienna() {
   let value = "Vienna";
   let unit = "metric";
   let url = `${apiEndpoint}?q=${value}&appid=${apiKey}&units=${unit}`;
-
   axios.get(url).then(showWeather);
 }
-
-// Convert temperature from Celsius to Fahrenheit
 
 let sendForm = document.querySelector("form");
 sendForm.addEventListener("submit", searchWeather);
