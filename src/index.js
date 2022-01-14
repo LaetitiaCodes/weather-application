@@ -59,8 +59,14 @@ function showWeather(response) {
     let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
     let value = searchInput.value;
     let unitImperial = "imperial";
-    let url = `${apiEndpoint}?q=${value}&appid=${apiKey}&units=${unitImperial}`;
-    temperatureToFahrenheit.innerHTML = Math.round(response.data.main.temp);
+    let urlImperial = `${apiEndpoint}?q=${value}&appid=${apiKey}&units=${unitImperial}`;
+    axios
+      .get(urlImperial)
+      .then(
+        (temperatureToFahrenheit.innerHTML = Math.round(
+          response.data.main.temp
+        ))
+      );
   }
 
   function changeToCelsius(response) {
@@ -70,17 +76,19 @@ function showWeather(response) {
     let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
     let value = searchInput.value;
     let unitMetric = "metric";
-    let url = `${apiEndpoint}?q=${value}&appid=${apiKey}&units=${unitMetric}`;
-    temperatureToCelsius.innerHTML = Math.round(response.data.main.temp);
+    let urlMetric = `${apiEndpoint}?q=${value}&appid=${apiKey}&units=${unitMetric}`;
+    axios
+      .get(urlMetric)
+      .then(
+        (temperatureToCelsius.innerHTML = Math.round(response.data.main.temp))
+      );
   }
 
   let tempCelsius = document.querySelector("#celsius");
-  tempCelsius.addEventListener("click", axios.get(url).then(changeToCelsius));
+  tempCelsius.addEventListener("click", changeToCelsius);
+
   let tempFahrenheit = document.querySelector("#fahrenheit");
-  tempFahrenheit.addEventListener(
-    "click",
-    axios.get(url).then(changeToFahrenheit)
-  );
+  tempFahrenheit.addEventListener("click", changeToFahrenheit);
 }
 
 function searchWeather(event) {
