@@ -97,7 +97,7 @@ footer {
   text-align: center;
 }
 .dresscodeTipp {
-  font-size: 32px;
+  font-size: 20px;
   font-style: italic;
   border: 1px solid transparent;
   border-radius: 35px;
@@ -107,6 +107,7 @@ footer {
   position: fixed;
   top: 200px;
   left: 800px;
+  max-width: 20%;
 }
 .currentWeather,
 .humidityWind {
