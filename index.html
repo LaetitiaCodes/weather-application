@@ -45,8 +45,7 @@
             />
 
             <input type="submit" value="🔎" id="submit-data" />
-              <input type="submit" value="📍" id="current-location" />
-            </button>
+            <input type="submit" value="📍" id="current-location" />
           </form>
 
           <button id="london-quicksearch">London</button>
@@ -59,88 +58,40 @@
           <div class="col-sm-3 mt-4 mb-4">
             <span class="nameCity"> Stockholm </span>
           </div>
-        
-            <div class="col-sm-3 mt-4 mb-4"   id="temperatureContainer">
+
+          <div class="col-sm-3 mt-4 mb-4" id="temperatureContainer">
             <span class="cityTemperature" id="cityTemperature">-6</span>
             <span id="celsius">°C </span>
             <span id="fahrenheit">|°F</span>
-        </div>
           </div>
-          <div class="col-sm-6">
-            <span class="dresscodeTipp"
-              >No such thing as bad weather, only bad clothing!
+        </div>
+        <div class="col-sm-6">
+          <span class="dresscodeTipp"
+            >No such thing as bad weather, only bad clothing!
             <img
-                src="http://openweathermap.org/img/wn/10d@2x.png"
-                alt=""
-                width="42"
-                id="weatherIcon"
-              />
-            </span>  
-          </div>
-        </div>
-        <div class="row align-items-center">
-          <div class="col-sm-3 currentWeather">
-            <span
-              >Updated <span id="time-now"></span>
-              <!--JS will display local day and time --></span
-            ><br /><span id="weatherCondition">Mostly cloudy</span>
-          </div>
-          <div class="col-sm-3 humidityWind">
-            <span id="humidity">Humidity: 5%</span><br /><span id="wind"
-              >Wind: 3 m/s</span
-            >
-          </div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="forecastDay">Mon.</h5>
-                <p class="weatherEmoji">🌦</p>
-                <p class="temperatureForecast">-5 °C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="forecastDay">Tue.</h5>
-                <p class="weatherEmoji">🌦</p>
-                <p class="temperatureForecast">-4 °C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="forecastDay">Wed.</h5>
-                <p class="weatherEmoji">☁️</p>
-                <p class="temperatureForecast">-8 °C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="forecastDay">Thu.</h5>
-                <p class="weatherEmoji">🌨</p>
-                <p class="temperatureForecast">-4 °C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="forecastDay">Fri.</h5>
-                <p class="weatherEmoji">☀️</p>
-                <p class="temperatureForecast">-6 °C</p>
-                <div></div>
-              </div>
-            </div>
-          </div>
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt=""
+              width="42"
+              id="weatherIcon"
+            />
+          </span>
         </div>
       </div>
+      <div class="row align-items-center">
+        <div class="col-sm-3 currentWeather">
+          <span
+            >Updated <span id="time-now"></span>
+            <!--JS will display local day and time --></span
+          ><br /><span id="weatherCondition">Mostly cloudy</span>
+        </div>
+        <div class="col-sm-3 humidityWind">
+          <span id="humidity">Humidity: 5%</span><br /><span id="wind"
+            >Wind: 3 m/s</span
+          >
+        </div>
+      </div>
+
+      <div id="forecast"></div>
     </div>
     <footer>
       <a href="https://github.com/LaetitiaCodes/weather-application"
