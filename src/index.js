@@ -96,7 +96,7 @@ function searchWeather(event) {
   let url = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(url).then(showWeather);
   //Temperature converter//
-  //Fahrenheit converting + updating dresscode-tipp//
+  //Fahrenheit converter//
   function changeToFahrenheit() {
     let searchInput = document.querySelector(".inputField");
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
@@ -107,7 +107,7 @@ function searchWeather(event) {
     axios.get(urlImperial).then(showWeather);
   }
   //Temperature converter//
-  //Celsius converter + updating the dresscode-tipp//
+  //Celsius converter //
 
   function changeToCelsius() {
     let searchInput = document.querySelector(".inputField");
@@ -137,7 +137,7 @@ function searchWeatherLondon() {
   axios.get(url).then(showWeather);
 
   //Temperature converter//
-  //Fahrenheit converting + updating dresscode-tipp//
+  //Fahrenheit converter//
   function changeToFahrenheit() {
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
     let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
@@ -148,7 +148,7 @@ function searchWeatherLondon() {
   }
 
   //Temperature converter//
-  //Celsius converter + updating the dresscode-tipp//
+  //Celsius converter//
 
   function changeToCelsius() {
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
@@ -176,7 +176,7 @@ function searchWeatherParis() {
   axios.get(url).then(showWeather);
 
   //Temperature converter//
-  //Fahrenheit converting + updating dresscode-tipp//
+  //Fahrenheit converter//
   function changeToFahrenheit() {
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
     let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
@@ -187,7 +187,7 @@ function searchWeatherParis() {
   }
 
   //Temperature converter//
-  //Celsius converter + updating the dresscode-tipp//
+  //Celsius converter//
 
   function changeToCelsius() {
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
@@ -215,7 +215,7 @@ function searchWeatherVienna() {
   axios.get(url).then(showWeather);
 
   //Temperature converter//
-  //Fahrenheit converting + updating dresscode-tipp//
+  //Fahrenheit converter//
   function changeToFahrenheit() {
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
     let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
@@ -226,12 +226,50 @@ function searchWeatherVienna() {
   }
 
   //Temperature converter//
-  //Celsius converter + updating the dresscode-tipp//
+  //Celsius converter//
 
   function changeToCelsius() {
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
     let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
     let city = "Vienna";
+    let unitMetric = "metric";
+    let urlMetric = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${unitMetric}`;
+    axios.get(urlMetric).then(showWeather);
+  }
+
+  let tempCelsius = document.querySelector("#celsius");
+  tempCelsius.addEventListener("click", changeToCelsius);
+
+  let tempFahrenheit = document.querySelector("#fahrenheit");
+  tempFahrenheit.addEventListener("click", changeToFahrenheit);
+}
+//Default view at landing//
+function searchWeatherStockholm() {
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
+  let city = "Stockholm";
+  let unit = "metric";
+  let url = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(url).then(showWeather);
+
+  //Temperature converter//
+  //Fahrenheit converter//
+  function changeToFahrenheit() {
+    let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+    let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
+    let city = "Stockholm";
+    let unitImperial = "imperial";
+    let urlImperial = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${unitImperial}`;
+    axios.get(urlImperial).then(showWeather);
+  }
+
+  //Temperature converter//
+  //Celsius converter//
+
+  function changeToCelsius() {
+    let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+    let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
+    let city = "Stockholm";
     let unitMetric = "metric";
     let urlMetric = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${unitMetric}`;
     axios.get(urlMetric).then(showWeather);
@@ -258,3 +296,5 @@ parisQuicksearch.addEventListener("click", searchWeatherParis);
 
 let viennaQuicksearch = document.querySelector("#vienna-quicksearch");
 viennaQuicksearch.addEventListener("click", searchWeatherVienna);
+
+searchWeatherStockholm();
