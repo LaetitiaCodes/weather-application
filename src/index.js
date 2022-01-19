@@ -62,7 +62,15 @@ function showPosition(position) {
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/onecall";
+  let apiKey = "da8f5611cc0070b3da5f77e2e4864cee";
+  let unit = "metric";
+  let apiUrl = `${apiEndpoint}?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 //Adding an advanced search function to display live weather//
 function showWeather(response) {
   let nameCity = document.querySelector(".nameCity");
@@ -83,6 +91,7 @@ function showWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 
 //Manual weather search//
@@ -280,6 +289,30 @@ function searchWeatherStockholm() {
 
   let tempFahrenheit = document.querySelector("#fahrenheit");
   tempFahrenheit.addEventListener("click", changeToFahrenheit);
+}
+
+//adding a forecast//
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row justify-content-center">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="forecastDay">${day}.</h5>
+                <p class="weatherEmoji">🌦</p>
+                <p class="temperatureForecast">-5 °C</p>
+              </div>
+            </div>
+      
+         </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 let searchCurrentLocation = document.querySelector("#current-location");
